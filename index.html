@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">AppointmentHub</div>
+        <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="./booked-appointments.html">Booked Appointments</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <header class="hero">
+        <div class="hero-overlay">
+            <h1>Book Your Appointment Easily</h1>
+            <p>Fast, Reliable, and Convenient Scheduling</p>
+        </div>
+    </header>
+    
+    <section id="services" class="services">
+        <h2><center>Our Services</center></h2>
+    
+        <div class="options-container">
+            <button class="option active" data-category="all">All</button>
+            <button class="option" data-category="medical">Medical</button>
+            <button class="option" data-category="beauty">Beauty & Wellness</button>
+            <button class="option" data-category="legal">Legal</button>
+            <button class="option" data-category="tutoring">Tutoring</button>
+            <button class="option" data-category="fitness">Fitness</button>
+            <button class="option" data-category="therapy">Therapy</button>
+            <button class="option" data-category="finance">Finance</button>
+            <button class="option" data-category="career">Career</button>
+        </div>
+    
+        <div class="container">
+            <div class="service-box" data-category="medical">
+                <img src="./images/checkup.jpg" alt="Medical">
+                <p>General Checkups</p>
+            </div>
+            <div class="service-box" data-category="beauty">
+                <img src="./images/hair&skincare.jpg" alt="Beauty">
+                <p>Hair & Skincare</p>
+            </div>
+            <div class="service-box" data-category="medical">
+                <img src="./images/dental.jpg" alt="Medical">
+                <p>Dental Care</p>
+            </div>
+            <div class="service-box" data-category="beauty">
+                <img src="./images/spa.jpg" alt="Beauty">
+                <p>Spa & Massages</p>
+            </div>
+            <div class="service-box" data-category="beauty">
+                <img src="./images/personal grooming.jpg" alt="Beauty">
+                <p>Personal Grooming</p>
+            </div>
+            <div class="service-box" data-category="legal">
+                <img src="./images/business.jpg" alt="Legal">
+                <p>Business Legal Advisory</p>
+            </div>
+            <div class="service-box" data-category="tutoring">
+                <img src="./images/Private Tutoring.jpg" alt="Tutoring">
+                <p>Private Tutoring</p>
+            </div>
+            <div class="service-box" data-category="fitness">
+                <img src="./images/personal training.jpg" alt="Fitness">
+                <p>Personal Training</p>
+            </div>
+            <div class="service-box" data-category="tutoring">
+                <img src="./images/Language Coaching.jpg" alt="Tutoring">
+                <p>Language Coaching</p>
+            </div>
+            <div class="service-box" data-category="fitness">
+                <img src="./images/yoga.jpg" alt="Fitness">
+                <p>Yoga & Meditation</p>
+            </div>
+            <div class="service-box" data-category="fitness">
+                <img src="./images/Nutrition Consultation.jpg" alt="Fitness">
+                <p>Nutrition Consultation</p>
+            </div>
+            <div class="service-box" data-category="therapy">
+                <img src="./images/Mental Health Therapy.jpg" alt="Therapy">
+                <p>Mental Health Therapy</p>
+            </div>
+            <div class="service-box" data-category="finance">
+                <img src="./images/Financial Consulting.jpg" alt="Finance">
+                <p>Financial Consulting</p>
+            </div>
+            <div class="service-box" data-category="career">
+                <img src="./images/Skill Development.jpg" alt="Career Coaching">
+                <p>Skill Development</p>
+            </div>
+            <div class="service-box" data-category="career">
+                <img src="./images/Resume Review & Interview Preparation.jpg" alt="Career Coaching">
+                <p>Resume & Interview Preparation</p>
+            </div>
+            <div class="service-box" data-category="therapy">
+                <img src="./images/Stress Management.jpg" alt="Therapy">
+                <p>Stress Management</p>
+            </div>
+        </div>
+    </section>
+    
+    
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <form class="contact-form">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="Your Name" required>
+            
+            <label for="email">Your Email</label>
+            <input type="email" id="email" placeholder="Your Email" required>
+            
+            <label for="message">Your Message</label>
+            <textarea id="message" placeholder="Your Message" required></textarea>
+            
+            <button type="submit">Send</button>
+        </form>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Sowmya AppointmentHub. All Rights Reserved.</p>
+    </footer>
+    
+    <script src="app.js"></script>
+    
+
+</body>
+</html>

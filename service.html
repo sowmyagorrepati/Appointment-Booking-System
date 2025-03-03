@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Page</title>
+    <link rel="stylesheet" href="service.css">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <div class="back-button" onclick="goBack()">←</div>
+            <div class="logo">AppointmentHub</div>
+        </div>
+        <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="./booked-appointments.html">Booked Appointments</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="service-container">
+        
+        <div class="service-box">
+            <img src="./images/hair&skincare.jpg" alt="Service Image">
+        </div>
+
+       
+        <div class="service-details">
+            <h2>Luxury Hair & Spa</h2>
+            <p><strong>Services Available:</strong> Haircut, Styling, Spa Treatments, Massages</p>
+            <p><strong>Description:</strong> Premium hair and spa services for relaxation and rejuvenation.</p>
+            <p><strong>Open - Close Time:</strong> 10:00 AM - 8:00 PM</p>
+            <p><strong>Location:</strong> 456 Serenity Avenue, City</p>            
+
+            <div class="appointment-section">
+                <label for="appointment-date">Select Date:</label>
+                <input type="date" id="appointment-date" required>
+                
+                <label for="appointment-time">Select Time:</label>
+                <input type="time" id="appointment-time" required>
+
+                <button onclick="bookAppointment()">Book Appointment</button>
+                <p id="booking-message"></p>
+            </div>
+
+           
+            <div class="review-section">
+                <h3>Leave a Review</h3>
+                <textarea id="review-text" placeholder="Write your review..."></textarea>
+                <button onclick="submitReview()">Send</button>
+            </div>
+
+            <div class="reviews-display">
+                <h3>Customer Reviews</h3>
+                <div id="reviews-container">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", loadReviews);
+
+function goBack() {
+    window.location.href = "index.html"; 
+}
+
+function bookAppointment() {
+    let date = document.getElementById("appointment-date").value;
+    let time = document.getElementById("appointment-time").value;
+    let service = getServiceName(); // Get current service name
+
+    if (date && time) {
+        let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+        appointments.push({ service, date, time }); // Store new appointment
+        localStorage.setItem("appointments", JSON.stringify(appointments));
+
+        document.getElementById("booking-message").innerText = "Appointment booked successfully!";
+        document.getElementById("booking-message").style.color = "green";
+    } else {
+        document.getElementById("booking-message").innerText = "Please select date and time.";
+        document.getElementById("booking-message").style.color = "red";
+    }
+}
+
+function submitReview() {
+    let reviewText = document.getElementById("review-text").value.trim();
+    const serviceName = getServiceName();  // Get the current service name
+    if (reviewText !== "") {
+        let reviews = JSON.parse(localStorage.getItem(serviceName)) || []; // Get existing reviews for the service
+        reviews.push(reviewText); // Add new review
+        localStorage.setItem(serviceName, JSON.stringify(reviews)); // Save to localStorage
+
+        displayReview(reviewText); // Display on the page
+        document.getElementById("review-text").value = ""; // Clear textbox
+    }
+}
+
+function loadReviews() {
+    const serviceName = getServiceName();  // Get the current service name
+    let reviews = JSON.parse(localStorage.getItem(serviceName)) || [];
+    reviews.forEach(review => displayReview(review));
+}
+
+function displayReview(reviewText) {
+    let reviewContainer = document.getElementById("reviews-container");
+    let newReview = document.createElement("p");
+    newReview.textContent = reviewText;
+    reviewContainer.appendChild(newReview);
+}
+
+function getServiceName() {
+    const params = new URLSearchParams(window.location.search);
+    return decodeURIComponent(params.get("service")); // Get the current service name from the URL
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const servicesData = {
+        "General Checkups": {
+            image: "./images/checkup.jpg",
+            services: "Routine Checkups, Blood Tests, Consultations",
+            description: "Quality healthcare services with expert doctors.",
+            time: "9:00 AM - 5:00 PM",
+            location: "123 Health Street, City"
+        },
+        "Hair & Skincare": {
+            image: "./images/hair&skincare.jpg",
+            services: "Haircuts, Styling, Skin Treatments",
+            description: "Premium hair and skincare services for a fresh look.",
+            time: "10:00 AM - 8:00 PM",
+            location: "456 Beauty Lane, City"
+        },
+        "Dental Care": {
+            image: "./images/dental.jpg",
+            services: "Teeth Cleaning, Braces, Root Canal Treatment",
+            description: "Professional dental care for a bright and healthy smile.",
+            time: "9:00 AM - 6:00 PM",
+            location: "789 Dental Road, City"
+        },
+        "Spa & Massages": {
+            image: "./images/spa.jpg",
+            services: "Aromatherapy, Full Body Massages",
+            description: "Relax and rejuvenate with professional spa treatments.",
+            time: "10:00 AM - 9:00 PM",
+            location: "101 Spa Street, City"
+        },
+        "Personal Grooming": {
+            image: "./images/personal grooming.jpg",
+            services: "Hair Styling, Makeup, Personal Care",
+            description: "Enhance your appearance with expert grooming services.",
+            time: "11:00 AM - 7:00 PM",
+            location: "202 Grooming Avenue, City"
+        },
+        "Business Legal Advisory": {
+            image: "./images/business.jpg",
+            services: "Business Registration, Legal Consulting",
+            description: "Expert legal advice for businesses and startups.",
+            time: "9:00 AM - 6:00 PM",
+            location: "303 Legal Street, City"
+        },
+        "Private Tutoring": {
+            image: "./images/Private Tutoring.jpg",
+            services: "One-on-One Tutoring, Exam Preparation",
+            description: "Personalized tutoring for academic success.",
+            time: "Flexible",
+            location: "Online / In-Person"
+        },
+        "Personal Training": {
+            image: "./images/personal training.jpg",
+            services: "Strength Training, Cardio, Fitness Plans",
+            description: "Customized fitness programs with professional trainers.",
+            time: "6:00 AM - 8:00 PM",
+            location: "Gym / Home Sessions"
+        },
+        "Language Coaching": {
+            image: "./images/Language Coaching.jpg",
+            services: "English, Spanish, French, German",
+            description: "Learn new languages with expert guidance.",
+            time: "Flexible",
+            location: "Online / Offline"
+        },
+        "Yoga & Meditation": {
+            image: "./images/yoga.jpg",
+            services: "Guided Yoga, Mindfulness Meditation",
+            description: "Improve mental and physical health with yoga.",
+            time: "6:00 AM - 7:00 PM",
+            location: "Yoga Center, City"
+        },
+        "Nutrition Consultation": {
+            image: "./images/Nutrition Consultation.jpg",
+            services: "Diet Plans, Weight Management",
+            description: "Expert advice on nutrition and healthy eating.",
+            time: "10:00 AM - 5:00 PM",
+            location: "Nutrition Center, City"
+        },
+        "Mental Health Therapy": {
+            image: "./images/Mental Health Therapy.jpg",
+            services: "Counseling, Therapy Sessions",
+            description: "Professional help for mental wellness and stress management.",
+            time: "9:00 AM - 6:00 PM",
+            location: "Mental Health Clinic, City"
+        },
+        "Financial Consulting": {
+            image: "./images/Financial Consulting.jpg",
+            services: "Investment Advice, Tax Planning",
+            description: "Expert financial planning services.",
+            time: "9:00 AM - 6:00 PM",
+            location: "Finance Street, City"
+        },
+        "Skill Development": {
+            image: "./images/Skill Development.jpg",
+            services: "Professional Skills, Soft Skills Training",
+            description: "Enhance your career with skill development programs.",
+            time: "Flexible",
+            location: "Online / Offline"
+        },
+        "Resume & Interview Preparation": {
+            image: "./images/Resume Review & Interview Preparation.jpg",
+            services: "Resume Writing, Mock Interviews",
+            description: "Get job-ready with expert resume and interview prep.",
+            time: "Flexible",
+            location: "Online"
+        },
+        "Stress Management": {
+            image: "./images/Stress Management.jpg",
+            services: "Meditation, Therapy",
+            description: "Reduce stress with mindfulness techniques.",
+            time: "9:00 AM - 7:00 PM",
+            location: "Wellness Center, City"
+        }
+    };
+
+    const serviceName = getServiceName();
+            if (servicesData[serviceName]) {
+                document.querySelector(".service-box img").src = servicesData[serviceName].image;
+                document.querySelector(".service-details h2").innerText = serviceName;
+                document.querySelector(".service-details p:nth-of-type(1)").innerHTML = `<strong>Services Available:</strong> ${servicesData[serviceName].services}`;
+                document.querySelector(".service-details p:nth-of-type(2)").innerHTML = `<strong>Description:</strong> ${servicesData[serviceName].description}`;
+                document.querySelector(".service-details p:nth-of-type(3)").innerHTML = `<strong>Open - Close Time:</strong> ${servicesData[serviceName].time}`;
+                document.querySelector(".service-details p:nth-of-type(4)").innerHTML = `<strong>Location:</strong> ${servicesData[serviceName].location}`;
+            }
+        });
+    </script>
+</body>
+</html>

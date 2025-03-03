@@ -1,0 +1,209 @@
+/* Root Variables */
+:root {
+    --primary-color: black;
+    --secondary-color: linear-gradient(to right, #00000095, #434343);
+    --text-color: #fff;
+    --background-color: #f4f4f4;
+}
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+}
+
+/* Navbar */
+nav {
+    background: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    color: var(--text-color);
+    position: sticky;
+    top: 0; 
+    z-index: 1000; 
+}
+
+
+nav .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+/* Hero Section */
+.hero {
+    background: url('./images/hero.jpg') no-repeat center center/cover;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-color);
+    position: relative;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Services Section */
+.options-container {
+    margin: 2em 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    text-align: center;
+}
+
+.option {
+    background-color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    padding: 0.8em 1.5em;
+    border-radius: 0.5em;
+    text-transform: capitalize;
+    transition: background 0.3s ease-in-out;
+    color: white;
+}
+
+.option:hover, .option.active {
+    background-color: var(--text-color);
+    color: black;
+    border: #000000 1px solid;
+}
+/* Services Section */
+.container {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 20px;
+}
+
+.service-box {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; 
+    max-width: 300px; 
+    min-height: 250px; 
+}
+
+.service-box img {
+    width: 100%;
+    max-height: 210px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.service-box p {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.service-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.6), 0 0 30px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Contact Section */
+.contact {
+    padding: 50px 20px;
+    text-align: center;
+    background: #eef1f7;
+}
+
+.contact h2 {
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 45px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.contact-form label {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-top: 12px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+    font-size: 1em;
+}
+
+.contact-form textarea {
+    resize: none;
+    height: 120px;
+}
+
+.contact-form button {
+    margin-top: 20px;
+    padding: 12px;
+    background: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.contact-form button:hover {
+    background: var(--secondary-color);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--primary-color);
+    color: var(--text-color);
+}

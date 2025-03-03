@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booked Appointments</title>
+    <link rel="stylesheet" href="bookstyle.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Booked Appointments</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Service</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody id="appointments-list">
+                <!-- Booked appointments will be dynamically inserted here -->
+            </tbody>
+        </table>
+        <button onclick="goBack()">Back to Home</button>
+    </div>
+
+    <script>
+        function loadAppointments() {
+            let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+            let appointmentsList = document.getElementById("appointments-list");
+
+            appointmentsList.innerHTML = ""; // Clear existing content
+
+            appointments.forEach((appointment) => {
+                let row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${appointment.service}</td>
+                    <td>${appointment.date}</td>
+                    <td>${appointment.time}</td>
+                `;
+                appointmentsList.appendChild(row);
+            });
+        }
+
+        function goBack() {
+            window.location.href = "index.html"; 
+        }
+
+        document.addEventListener("DOMContentLoaded", loadAppointments);
+    </script>
+</body>
+</html>
