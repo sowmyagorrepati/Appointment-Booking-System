@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booked Appointments</title>
     <link rel="stylesheet" href="bookstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
     <div class="container">
@@ -15,13 +16,14 @@
                     <th>Service</th>
                     <th>Date</th>
                     <th>Time</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody id="appointments-list">
                 <!-- Booked appointments will be dynamically inserted here -->
             </tbody>
         </table>
-        <button onclick="goBack()">Back to Home</button>
+        <button onclick="goBack()" class="backbtn">Back to Home</button>
     </div>
 
     <script>
@@ -31,15 +33,27 @@
 
             appointmentsList.innerHTML = ""; // Clear existing content
 
-            appointments.forEach((appointment) => {
+            appointments.forEach((appointment, index) => {
                 let row = document.createElement("tr");
                 row.innerHTML = `
                     <td>${appointment.service}</td>
                     <td>${appointment.date}</td>
                     <td>${appointment.time}</td>
+                    <td>
+                        <button onclick="deleteAppointment(${index})" class="delete-btn">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
                 `;
                 appointmentsList.appendChild(row);
             });
+        }
+
+        function deleteAppointment(index) {
+            let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+            appointments.splice(index, 1); // Remove the selected appointment
+            localStorage.setItem("appointments", JSON.stringify(appointments)); // Update storage
+            loadAppointments(); // Reload the updated list
         }
 
         function goBack() {
@@ -48,5 +62,19 @@
 
         document.addEventListener("DOMContentLoaded", loadAppointments);
     </script>
+
+    <style>
+        .delete-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: red;
+            font-size: 18px;
+        }
+
+        .delete-btn:hover {
+            color: darkred;
+        }
+    </style>
 </body>
 </html>
