@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Baloo+Tamma+2:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: white;
+            margin: 0;
+            font-family: 'Baloo Tamma 2', cursive;
+            font-weight: bold;
+        }
+        .login-container {
+            text-align: center;
+            width: 350px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-container h1 {
+            color: rgb(12, 9, 9);
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+            padding: 0 20px;
+        }
+        .social-icons img {
+            width: 50px;
+            height: 50px;
+        }
+        .button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: rgba(1, 3, 58, 0.23);
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .forgot {
+            font-size: 14px;
+            color: rgb(12, 8, 8);
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function navigateToOTP() {
+            window.location.href = "verifyotppage.html";
+        }
+    </script>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        
+        <p>Continue With</p>
+        <div class="social-icons">
+            <img src="./google.jpg" alt="Google">
+            <img src="./apple.jpg" alt="Apple">
+            <img src="./facebook.jpg" alt="Facebook">
+        </div>
+        <button class="button" onclick="navigateToOTP()">Continue With Phone Number</button>
+        <button class="button" onclick="window.location.href='notamemberyet.html'">New User? Sign Up</button>
+        <p class="forgot">Forgot Password</p>
+    </div>
+</body>
+</html>

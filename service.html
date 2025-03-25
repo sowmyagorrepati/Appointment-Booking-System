@@ -43,6 +43,7 @@
 
                 <button onclick="bookAppointment()">Book Appointment</button>
                 <p id="booking-message"></p>
+                <button id="set-reminder" style="display:none;" onclick="setReminder()">Set Reminder</button>
             </div>
 
            
@@ -50,6 +51,7 @@
                 <h3>Leave a Review</h3>
                 <textarea id="review-text" placeholder="Write your review..."></textarea>
                 <button onclick="submitReview()">Send</button>
+
             </div>
 
             <div class="reviews-display">
@@ -67,7 +69,6 @@
 function goBack() {
     window.location.href = "index.html"; 
 }
-
 function bookAppointment() {
     let date = document.getElementById("appointment-date").value;
     let time = document.getElementById("appointment-time").value;
@@ -80,11 +81,21 @@ function bookAppointment() {
 
         document.getElementById("booking-message").innerText = "Appointment booked successfully!";
         document.getElementById("booking-message").style.color = "green";
+
+        // Show the "Set Reminder" button
+        document.getElementById("set-reminder").style.display = "block";
     } else {
         document.getElementById("booking-message").innerText = "Please select date and time.";
         document.getElementById("booking-message").style.color = "red";
     }
 }
+
+function setReminder() {
+    alert("Reminder set successfully!");
+}
+
+// Add this inside the appointment section
+
 
 function submitReview() {
     let reviewText = document.getElementById("review-text").value.trim();

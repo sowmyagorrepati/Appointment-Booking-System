@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify OTP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Baloo+Tamma+2:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: white;
+            margin: 0;
+            font-family: 'Baloo Tamma 2', cursive;
+            font-weight: bold;
+        }
+        .otp-container {
+            text-align: center;
+            width: 350px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .otp-container h1 {
+            color: rgb(19, 6, 6);
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+        .otp-container p {
+            font-size: 14px;
+            color: black;
+            margin-bottom: 15px;
+        }
+        .otp-input-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .otp-input-group input {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            font-size: 20px;
+            border: 1px solid black;
+            border-radius: 5px;
+            outline: none;
+        }
+        .timer {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .resend {
+            color: #545454;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .get-started-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: rgba(16, 2, 39, 0.23);
+            color: black;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-family: 'Baloo Tamma 2', cursive;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+    <script>
+        function validatePhoneNumber() {
+            var phoneNumber = document.getElementById("phone-number").value;
+            if (!phoneNumber || phoneNumber.length < 8) {
+                alert("Wrong number entered. Please enter at least 8 digits.");
+                return false;
+            }
+            window.location.href = "verifyyourotp.html";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector(".resend").addEventListener("click", function() {
+                alert("OTP Resent!");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="otp-container">
+        <h1>OTP Verification</h1>
+        <p>Enter the code from the SMS we sent to</p>
+        <div class="otp-input-group">
+            <input type="text" maxlength="1">
+            <input type="text" maxlength="1">
+            <input type="text" maxlength="1">
+            <input type="text" maxlength="1">
+        </div>
+        <div class="timer">02:33</div>
+        <p>I didn’t receive any code. <span class="resend">RESEND</span></p>
+        
+        <button class="get-started-btn" onclick="window.location.href='index.html'">Let's Get Started</button>
+    </div>
+</body>
+</html>
